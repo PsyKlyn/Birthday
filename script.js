@@ -1,6 +1,4 @@
-/* ===============================
-   GLOBAL DATA
-================================ */
+/* GLOBAL DATA */
 
 document.addEventListener("pointerdown", startIdleWatcher);
 document.addEventListener("keydown", startIdleWatcher);
@@ -23,9 +21,7 @@ const photoMemories = [
   { img: "mem1.jpg", caption: "That random day became special ❤️" }
 ];
 
-/* ===============================
-    SMART FLOATING COMPLIMENT SYSTEM
-================================ */
+/* SMART FLOATING COMPLIMENT SYSTEM */
 
 let userMessageCount = 0;
 let nextComplimentTrigger = 3; // first trigger at 3
@@ -38,9 +34,7 @@ const floatingCompliments = [
   "This moment feels nicer because of you."
 ];
 
-/* ===============================
-   🌙 LATE NIGHT STAY MOMENT
-================================ */
+/* LATE NIGHT STAY MOMENT */
 
 let idleTimer = null;
 
@@ -51,9 +45,7 @@ const stayMessages = [
   "I like when you’re here."
 ];
 
-/* ===============================
-    REACTION MIRROR SYSTEM
-================================ */
+/* REACTION MIRROR SYSTEM */
 
 let lastReactionTime = 0;
 
@@ -75,9 +67,7 @@ let memoryIndex = 0;
 let chatUI = null;
 
 
-/* ===============================
-   MESSAGE STACK
-================================ */
+/* MESSAGE STACK */
 
 messages.forEach(msg => {
   const card = document.createElement("div");
@@ -182,9 +172,7 @@ function closeAll() {
 
 }
 
-/* ===============================
-   MUSIC
-================================ */
+/*   MUSIC  */
 
 const audio = new Audio("music.mp3");
 audio.loop = true;
@@ -201,9 +189,7 @@ function toggleMusic() {
   }
 }
 
-/* ===============================
-   CANDLE FLOW
-================================ */
+/*   CANDLE FLOW */
 
 function startCandleFlow() {
   closeAll();
@@ -248,9 +234,7 @@ function startMicBlowDetection() {
   });
 }
 
-/* ===============================
-   EXTINGUISH
-================================ */
+/*  EXTINGUISH */
 
 function extinguishFlames() {
   document.querySelectorAll(".flame").forEach(flame => {
@@ -285,9 +269,7 @@ function extinguishFlames() {
   }, 2000);
 }
 
-/* ===============================
-   CONFETTI
-================================ */
+/*  CONFETTI  */
 
 function confettiExplosion() {
   for (let i = 0; i < 80; i++) {
@@ -428,9 +410,7 @@ function spawnSpark() {
   setTimeout(() => s.remove(), 800);
 }
 
-/* ===============================
-    BUBBLE BACKGROUND
-================================ */
+/*  BUBBLE BACKGROUND  */
 
 setInterval(() => {
 
@@ -452,9 +432,7 @@ setInterval(() => {
 
 }, 450);
 
-/* ===============================
-    BURST BUBBLES
-================================ */
+/*   BURST BUBBLES  */
 
 setInterval(() => {
 
@@ -476,9 +454,7 @@ setInterval(() => {
 
 }, 450);
 
-/* ===============================
-    FIREWORKS
-================================ */
+/*  FIREWORKS   */
 
 function launchFireworks() {
 
@@ -576,19 +552,19 @@ function renderPhotoMemories(container) {
 
     const isMobile = window.innerWidth < 600;
 
-    /* ⭐ smaller spread on mobile */
+    /*  smaller spread on mobile */
     const spread = isMobile ? 40 : 80;
 
-    /* ⭐ centered stack */
+    /*  centered stack */
     const baseX = (i - (photoMemories.length - 1) / 2) * spread;
 
-    /* ⭐ smaller rotation mobile */
+    /*  smaller rotation mobile */
     const rot = isMobile ? (Math.random() * 6 - 3) : (Math.random() * 10 - 5);
 
-    /* ⭐ smaller vertical jitter */
+    /*  smaller vertical jitter */
     const y = isMobile ? (Math.random() * 10 - 5) : (Math.random() * 20 - 10);
 
-    /* ⭐ CRITICAL → position from center */
+    /*  CRITICAL → position from center */
     card.style.left = "50%";
     card.style.top = "50%";
     card.style.transform =
@@ -692,18 +668,15 @@ document.querySelectorAll(".flipCard").forEach(card => {
 
 });
 
-/* ===============================
-    WHATSAPP MEMORY DATA
-================================ */
+/*   WHATSAPP MEMORY DATA  */
 
 const wisherMessages = [
   "Happy birthday 🎉",
   "You mean a lot to me ❤️",
   "Always here for you ✨"
 ];
-/* ===============================
-    OPEN CHAT MEMORY
-================================ */
+/*  OPEN CHAT MEMORY   */
+
 function openChatMemory() {
   const stage = document.getElementById("cakeStage");
   stage.style.display = "block";
@@ -748,9 +721,7 @@ function openChatMemory() {
   sendWisherMessage();
 }
 
-/* ===============================
-   💬 RENDER CHAT
-================================ */
+/*  RENDER CHAT  */
 
 function renderChat() {
   const body = document.getElementById("chatBody");
@@ -1011,9 +982,7 @@ document.addEventListener("keydown", e => {
   }
 });
 
-/* ===============================
-   CHAT ENGINE
-================================ */
+/*  CHAT ENGINE  */
 
 function sendWisherMessage() {
   if (convoStep >= wisherMessages.length) return;
@@ -1041,9 +1010,7 @@ function sendWisherMessage() {
   }, 1200);
 }
 
-/* ===============================
-   REALISTIC TYPING TIME ENGINE
-================================ */
+/*   REALISTIC TYPING TIME ENGINE  */
 
 function getTypingTime(text) {
 
@@ -1055,7 +1022,7 @@ function getTypingTime(text) {
 
   let emotionalPause = 0;
 
-  /* ⭐ emotional pause detection */
+  /*  emotional pause detection */
   if (text.includes("❤️") || text.includes("...") || text.length > 90) {
     emotionalPause = 800;
   }
@@ -1296,7 +1263,7 @@ const AI_MEMORY = {
   lastTopic: null
 };
 
-/* ⭐ sentence level patterns */
+/*  sentence level patterns */
 const INTENTS = [
   { type: "birthday", patterns: ["happy birthday", "birthday", "bday"] },
   { type: "gratitude", patterns: ["thank", "thanks", "thx"] },
@@ -1314,7 +1281,7 @@ const INTENTS = [
   { type: "dream", patterns: ["sweet dreams", "sweet dream", "nice dreams", "nice dream", "good dreams", "good dream", "sleep well", "rest well", "sexy dreams"] },
 ];
 
-/* ⭐ detect intent */
+/*  detect intent */
 function detectIntent(text) {
   text = text.toLowerCase();
 
@@ -1327,7 +1294,7 @@ function detectIntent(text) {
   return "general";
 }
 
-/* ⭐ emotional response bank */
+/*  emotional response bank */
 
 const RESPONSES = {
 
@@ -1420,7 +1387,7 @@ const RESPONSES = {
 };
 
 /* ===============================
-   🥀 HIDDEN EASTER RESPONSES
+    HIDDEN EASTER RESPONSES
 ================================ */
 
 const easterTriggers = [
@@ -1525,9 +1492,7 @@ function morphOpen(iconEl, contentHTML) {
 }
 
 
-/* ===============================
-   ⭐ FIXED UNIVERSAL GESTURE ENGINE
-================================ */
+/* FIXED UNIVERSAL GESTURE ENGINE  */
 
 let gesture = {
   startX: 0,
@@ -1622,9 +1587,7 @@ function applyGlassShimmer() {
 applyGlassShimmer();
 
 
-/* ===============================
-   ✨ NAME SPARKLE EFFECT
-================================ */
+/*  NAME SPARKLE EFFECT */
 
 const nameEl = document.querySelector(".birthday-name");
 
@@ -1644,9 +1607,7 @@ if (nameEl) {
   }, 1200);
 }
 
-/* ===============================
-   💗 HOLD TO FEEL ENGINE
-================================ */
+/*  HOLD TO FEEL ENGINE */
 
 let holdTimer = null;
 
@@ -1695,9 +1656,7 @@ document.addEventListener("pointerup", () => {
 });
 
 
-/* ===============================
-   🖼 AVATAR ZOOM ENGINE
-================================ */
+/*  AVATAR ZOOM ENGINE   */
 
 function openAvatarPreview() {
 
@@ -1790,4 +1749,5 @@ function startIdleWatcher() {
     }, 6000);
 
   }, 6000);
+
 }
