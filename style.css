@@ -402,9 +402,7 @@ body {
   backdrop-filter: blur(22px)
 }
 
-/* ===============================
-   💬 WHATSAPP MEMORY UI
-================================ */
+/*  WHATSAPP MEMORY UI  */
 
 .chatScreen {
   width: 360px;
@@ -415,7 +413,7 @@ body {
   flex-direction: column;
   position: relative;
 
-  /* ⭐ glass base */
+  /*  glass base */
   background: rgba(255, 255, 255, .12);
   backdrop-filter: blur(25px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, .25);
@@ -427,11 +425,11 @@ body {
   position: absolute;
   inset: 0;
 
-  /* ⭐ WhatsApp pattern */
+  /*  WhatsApp pattern */
 
   background-size: contain;
 
-  /* ⭐ soften pattern */
+  /*  soften pattern */
   opacity: .35;
 
   pointer-events: none;
@@ -497,7 +495,7 @@ body {
   gap: 8px;
 
   background: transparent;
-  /* ⭐ critical */
+  /*  critical */
 
   scrollbar-width: none;
 }
@@ -534,9 +532,7 @@ body {
   border-top-right-radius: 4px;
 }
 
-/* ===============================
-   💗 FLOATY MESSAGE SEND
-================================ */
+/*  FLOATY MESSAGE SEND */
 
 .msg.me {
   transform: translateY(40px) scale(.98);
@@ -1022,7 +1018,7 @@ body {
   transform: scale(1);
 }
 
-/* ⭐ morph container */
+/*  morph container */
 .morphing {
   position: fixed;
   bottom: 35px;
@@ -1037,7 +1033,7 @@ body {
   z-index: 999;
 }
 
-/* ⭐ expanded state */
+/*  expanded state */
 .morphing.open {
   width: 360px;
   height: 520px;
@@ -1045,9 +1041,7 @@ body {
   bottom: 120px;
 }
 
-/* ===============================
-   ✨ PREMIUM GLASS SHIMMER
-================================ */
+/*  PREMIUM GLASS SHIMMER  */
 
 .glass-shimmer {
   position: absolute;
@@ -1135,9 +1129,7 @@ body {
   }
 }
 
-/* ===============================
-   💗 HOLD TO FEEL
-================================ */
+/*  HOLD TO FEEL  */
 
 .card.hold-active {
   transform: scale(1.06) !important;
@@ -1159,9 +1151,7 @@ body {
   }
 }
 
-/* ===============================
-   ✨ STACK FOCUS OVERLAY
-================================ */
+/*  STACK FOCUS OVERLAY  */
 
 .stack-focus {
   position: fixed;
@@ -1180,9 +1170,7 @@ body {
   opacity: 1;
 }
 
-/* ===============================
-   🎬 CINEMATIC OPEN
-================================ */
+/*  CINEMATIC OPEN  */
 
 .chatScreen {
   transform: scale(.92) translateY(40px);
@@ -1195,9 +1183,7 @@ body {
   opacity: 1;
 }
 
-/* ===============================
-   🎬 SAFE CINEMATIC BLUR FIX
-================================ */
+/*  SAFE CINEMATIC BLUR FIX  */
 
 body.blur-active .hero,
 body.blur-active .stack {
@@ -1205,9 +1191,7 @@ body.blur-active .stack {
   transition: .5s ease;
 }
 
-/* ===============================
-   🖼 AVATAR ZOOM PREVIEW
-================================ */
+/*   AVATAR ZOOM PREVIEW  */
 
 .avatarPreviewOverlay {
   position: fixed;
@@ -1238,9 +1222,7 @@ body.blur-active .stack {
   transform: scale(2.4);
 }
 
-/* ===============================
-   💗 MESSAGE REACTIONS
-================================ */
+/*   MESSAGE REACTIONS   */
 
 .reactionBar {
   position: absolute;
@@ -1273,9 +1255,7 @@ body.blur-active .stack {
   transform: scale(1.3);
 }
 
-/* ===============================
-   ✨ FLOATING COMPLIMENT
-================================ */
+/*  FLOATING COMPLIMENT  */
 
 .floatingCompliment {
   position: fixed;
@@ -1307,9 +1287,7 @@ body.blur-active .stack {
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* ===============================
-   🌙 PLACEHOLDER GLOW PULSE
-================================ */
+/*  PLACEHOLDER GLOW PULSE    */
 
 .chatInput input.stayGlow {
   animation: stayPulse 2s ease-in-out 3;
@@ -1328,4 +1306,5 @@ body.blur-active .stack {
   100% {
     box-shadow: 0 0 18px rgba(133, 8, 8, 0.678);
   }
+
 }
