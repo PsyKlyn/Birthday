@@ -8,7 +8,7 @@ document.addEventListener("keydown", startIdleWatcher);
 let storedShareImage = null;
 let startX = null;
 let activePanel = null;
-const phoneNumber = "+918811831004";
+const phoneNumber = "";
 
 const messages = [
   "It’s your birthday… and somehow, you’re twenty-one now.",
@@ -1790,4 +1790,5 @@ function startIdleWatcher() {
     }, 6000);
 
   }, 6000);
+
 }
