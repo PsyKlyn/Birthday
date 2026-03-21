@@ -15,7 +15,6 @@ body {
   color: white;
   overflow: hidden;
 }
-
 /* HERO */
 .hero {
   font-size: 3rem;
@@ -408,20 +407,20 @@ body {
 
 .chatScreen {
   width: 360px;
-  height: 100dvh;
+  height: 520px;
   border-radius: 26px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: relative;
-  inset: 0;
+  
 
   /* ⭐ glass base */
   background: rgba(255, 255, 255, .12);
   backdrop-filter: blur(25px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, .25);
   box-shadow: 0 25px 60px rgba(0, 0, 0, .35);
-  z-index: 1000;
+  
 }
 
 .chatScreen::before {
@@ -497,7 +496,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-height: 0;
+  height: 0;
 
   background: transparent;
   /* ⭐ critical */
@@ -914,7 +913,6 @@ body {
   display: flex;
   gap: 8px;
   padding: 10px;
-  padding-bottom: calc(10px + env(safe-area-inset-bottom));
   background: rgba(255,255,255,.15);
   backdrop-filter: blur(15px);
   border-top: 1px solid rgba(255,255,255,.2);
