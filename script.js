@@ -1291,7 +1291,6 @@ function triggerReactionMirror(emoji) {
 
   // natural delay before typing starts
   const preTypingDelay = 1000 + Math.random() * 1000;
-
   setTimeout(() => {
 
     // show typing header
