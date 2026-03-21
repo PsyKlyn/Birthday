@@ -16,11 +16,6 @@ body {
   overflow: hidden;
 }
 
-html, body{
-  height: 100%;
-  overflow: hidden;
-}
-
 /* HERO */
 .hero {
   font-size: 3rem;
@@ -418,13 +413,15 @@ html, body{
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: relative;
+  inset: 0;
 
   /* ⭐ glass base */
   background: rgba(255, 255, 255, .12);
   backdrop-filter: blur(25px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, .25);
   box-shadow: 0 25px 60px rgba(0, 0, 0, .35);
+  z-index: 1000;
 }
 
 .chatScreen::before {
