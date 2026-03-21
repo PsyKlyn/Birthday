@@ -1861,3 +1861,13 @@ function startIdleWatcher() {
 
   }, 6000);
 }
+
+function setRealHeight() {
+  document.documentElement.style.setProperty(
+    "--vh",
+    `${window.innerHeight * 0.01}px`
+  );
+}
+
+setRealHeight();
+window.addEventListener("resize", setRealHeight);
