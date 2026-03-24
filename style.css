@@ -1452,6 +1452,24 @@ body.blur-active .stack {
   transform: rotateY(180deg);
   padding: 20px;
   text-align: center;
+  overflow: hidden;
+}
+.back p {
+  font-size: clamp(12px, 2.8vw, 16px);  /* 🔥 responsive text */
+  line-height: 1.4;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  max-height: 100%;
+  overflow: hidden;
+}
+.back p {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;   /* 🔥 limit lines */
+  -webkit-box-orient: vertical;
+  line-clamp: 6;
+  overflow: hidden;
 }
 @media (max-width: 600px) {
 
