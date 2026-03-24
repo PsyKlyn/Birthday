@@ -547,7 +547,7 @@ function showWishReveal() {
 
   card.innerHTML = `
     <h2>A Wish for you ✨</h2>
-    <p style="margin-top:10px">
+    <p>
       I wish your year is filled with chaos, laughter
       and unforgettable memories ❤️
     </p>
@@ -565,9 +565,9 @@ function showWishReveal() {
     setTimeout(() => {
       card.remove();
       showVoiceNote();
-    }, 500);
+    }, 400);
 
-  }, 7500);
+  }, 5500);
 }
 
 function openMemories() {

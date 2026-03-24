@@ -33,7 +33,14 @@ body {
 
 #wishCard h2 {
   font-family: 'Inter', sans-serif;
-  font-size: 38px;
+  font-size: clamp(20px, 5vw, 28px);
+  line-height: 1.2;
+}
+
+#wishCard p {
+  font-size: clamp(13px, 3.5vw, 16px);
+  line-height: 1.5;
+  opacity: 0.9;
 }
 
 .card {
@@ -209,25 +216,36 @@ body {
   }
 }
 
-/* WISH CARD */
 #wishCard {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(.8);
-  padding: 30px 40px;
-  border-radius: 28px;
+  transform: translate(-50%, -50%) scale(.85);
+
+  width: clamp(260px, 80vw, 360px);   /* 🔥 responsive width */
+  max-height: 70vh;
+
+  padding: 18px 16px;                 /* 🔥 smaller padding */
+
+  border-radius: 24px;
   backdrop-filter: blur(22px);
   background: rgba(255, 255, 255, .18);
   border: 1px solid rgba(255, 255, 255, .4);
+
   text-align: center;
+
+  display: flex;                      /* 🔥 FIX layout */
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+
   opacity: 0;
-  transition: .8s;
+  transition: .6s;
 }
 
 #wishCard.show {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1)
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* VOICE */
