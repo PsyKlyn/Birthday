@@ -338,7 +338,7 @@ function showVoiceNote() {
 
   stage.innerHTML = `
     <div class="voiceCard" id="voiceCard">
-      <h2>🎤 A message for you</h2>
+      <h2>A message for you</h2>
       <!--  waveform -->
       <div class="wave" id="wave">
         <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
