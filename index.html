@@ -31,7 +31,7 @@
   <!--  Cake stage -->
   <div id="cakeStage" style="display:none;position:absolute;text-align:center;">
     <div style="font-size:120px">🎂</div>
-    <div style="margin-top:10px;font-size:18px">Blow the candles 🎤</div>
+    <div style="margin-top:10px;font-size:18px">Blow the candles</div>
   </div>
 
   <div class="dock">
@@ -46,7 +46,7 @@
     </div>
 
     <div class="icon" onclick="toggleMusic()">
-      <i id="musicIcon" class="fa-solid fa-play"></i>
+      <i id="musicIcon" class="fa-solid fa-play" onclick="toggleMusic(event)"></i>
     </div>
     <div class="icon" onclick="togglePanel('memories', openMemories)">
       <i class="fa-solid fa-images"></i>
@@ -61,7 +61,7 @@
   <div id="iosNotif" class="iosNotif" onclick="openChatFromIOSNotif()">
 
     <div class="iosLeft">
-      <img src="avatar.png">
+      <img src="avatar.jpeg">
     </div>
 
     <div class="iosCenter">
