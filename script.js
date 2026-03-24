@@ -353,7 +353,7 @@ function showVoiceNote() {
   `;
 }
 
-let voiceAudio = new Audio("music.mp3");
+let voiceAudio = new Audio("voice.mp4");
 let audioCtx, analyser, source, dataArray, raf;
 
 voiceAudio.onended = () => {
