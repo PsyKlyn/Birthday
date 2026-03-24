@@ -8,7 +8,7 @@
 body {
   font-family: 'Inter', sans-serif;
   height: 100vh;
-  background: radial-gradient(circle at 30% 20%, #1a1d3a, #2a0f2f, #0d1117);
+  background: radial-gradient(circle at 30% 20%, #1e2459, #401447, #0c2b5a);
   display: flex;
   align-items: center;
   justify-content: center;
