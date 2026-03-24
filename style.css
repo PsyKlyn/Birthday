@@ -1389,24 +1389,24 @@ body.blur-active .stack {
 
 .memory-card {
   position: absolute;
-  width: 220px;
-  height: 300px;
+  width: clamp(140px, 30vw, 220px);
+  height: clamp(200px, 42vw, 300px);
   transition: all .6s cubic-bezier(.22,1,.36,1);
   cursor: pointer;
 }
 
 .memory-card.center {
-  transform: translateX(0) scale(1.2);
+  transform: translateX(0) scale(1.15);
   z-index: 10;
 }
 
 .memory-card.left {
-  transform: translateX(-160px) scale(.9) ;
+  transform: translateX(-120%) scale(.9) ;
   opacity: .6;
 }
 
 .memory-card.right {
-  transform: translateX(160px) scale(.9) ;
+  transform: translateX(120%) scale(.9) ;
   opacity: .6;
 }
 
@@ -1452,4 +1452,23 @@ body.blur-active .stack {
   transform: rotateY(180deg);
   padding: 20px;
   text-align: center;
+}
+@media (max-width: 600px) {
+
+  .memory-stage {
+    height: 55vh;
+  }
+
+  .memory-card.center {
+    transform: translateX(0) scale(1.05);
+  }
+
+  .memory-card.left {
+    transform: translateX(-105%) scale(.85);
+  }
+
+  .memory-card.right {
+    transform: translateX(105%) scale(.85);
+  }
+
 }
