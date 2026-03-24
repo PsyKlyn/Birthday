@@ -18,9 +18,9 @@ const messages = [
 ];
 
 const photoMemories = [
-  { img: "mem1.jpg", caption: "That random day became special ❤️" },
-  { img: "mem2.png", caption: "Your smile is my favorite memory ✨" },
-  { img: "mem1.jpg", caption: "That random day became special ❤️" }
+  { img: "mem1.jpg", caption: "Your smile is my favorite memory " },
+  { img: "mem2.jpg", caption: "That first picture… I don’t know why, but it felt different. Your eyes don’t just look at me, they make me feel seen." },
+  { img: "mem3.jpeg", caption: "There’s a kind of happiness in your picture, but your eyes tell a deeper story. Not in a sad way… just someone who’s been through things and still holds it together."}
 ];
 
 /* ===============================
@@ -189,17 +189,38 @@ function closeAll() {
 const audio = new Audio("music.mp3");
 audio.loop = true;
 
-function toggleMusic() {
-  const icon = document.getElementById("musicIcon");
+const icon = document.getElementById("musicIcon");
+
+// 🔥 autoplay on first click anywhere
+document.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play().catch(() => {});
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+  }
+}, { once: true });
+
+// 🎯 toggle button
+function toggleMusic(event) {
+  event.stopPropagation(); // ⭐ VERY IMPORTANT
 
   if (audio.paused) {
     audio.play();
-    icon.classList.replace("fa-play", "fa-pause");
   } else {
     audio.pause();
-    icon.classList.replace("fa-pause", "fa-play");
   }
 }
+
+// 🔄 always sync icon with audio state
+audio.addEventListener("play", () => {
+  icon.classList.remove("fa-play");
+  icon.classList.add("fa-pause");
+});
+
+audio.addEventListener("pause", () => {
+  icon.classList.remove("fa-pause");
+  icon.classList.add("fa-play");
+});
 
 /* ===============================
    CANDLE FLOW
@@ -221,7 +242,7 @@ function startCandleFlow() {
       <div class="candle" style="left:75px"><div class="flame"></div></div>
       <div class="candle" style="left:110px"><div class="flame"></div></div>
     </div>
-    <div style="margin-top:20px">Blow the candles 🎤</div>
+    <div style="margin-top:20px">Blow the candles </div>
   `;
 
   startMicBlowDetection();
@@ -554,11 +575,28 @@ function openMemories() {
   const stage = document.getElementById("cakeStage");
   stage.style.display = "block";
 
-  stage.innerHTML = `<div id="memoryContainer"></div>`;
+  let html = `<div class="memory-stage">`;
 
-  const c = document.getElementById("memoryContainer");
+  photoMemories.slice(0, 3).forEach((m, i) => {
+    html += `
+      <div class="memory-card" data-index="${i}">
+        <div class="inner">
+          <div class="front">
+            <img src="${m.img}">
+          </div>
+          <div class="back">
+            <p>${m.caption}</p>
+          </div>
+        </div>
+      </div>
+    `;
+  });
 
-  renderPhotoMemories(c);
+  html += `</div>`;
+
+  stage.innerHTML = html;
+
+  initMemoryCards();
 }
 
 function renderPhotoMemories(container) {
@@ -697,7 +735,7 @@ document.querySelectorAll(".flipCard").forEach(card => {
 ================================ */
 
 const wisherMessages = [
-  "Happy birthday 🎉",
+  "Happy birthday Dimashree!  wishing you quiet happiness, real smiles, and a heart that feels lighter this year. ",
   "You mean a lot to me ❤️",
   "Always here for you ✨"
 ];
@@ -711,7 +749,7 @@ function openChatMemory() {
   stage.innerHTML = `
 <div class="chatScreen">
   <div class="chatHeader">
-    <img src="avatar.png" class="chatAvatar" onclick="openAvatarPreview()">
+    <img src="avatar.jpeg" class="chatAvatar" onclick="openAvatarPreview()">
     <div class="chatProfile" onclick="openProfile()" style="cursor:pointer">
       <div class="chatName">Longsodar</div>
       <div class="chatStatus" id="chatStatus"><span class="onlineDot"></span> online</div>
@@ -974,7 +1012,7 @@ function openProfile() {
     <i class="fa-solid fa-arrow-left" onclick="closeProfile()"></i> Contact info
   </div>
   <div class="profileBody">
-    <img src="avatar.png" class="profileAvatar">
+    <img src="avatar.jpeg" class="profileAvatar">
     <div class="profileName">Longsodar</div>
     <div class="profileStatus">Hey there! I am using your BirthdayApp ❤️</div>
 
@@ -1181,51 +1219,6 @@ function createBubble(m, body) {
   });
 }
 
-function spawnWaterBubble(target) {
-
-  const rect = target.getBoundingClientRect();
-
-  const b = document.createElement("div");
-  b.className = "waterBubble";
-
-  /* random horizontal position across message */
-  const randomX = rect.left + Math.random() * rect.width;
-
-  /* random vertical point near bottom area */
-  const randomY = rect.top + rect.height * 0.7 + Math.random() * rect.height * 0.3;
-
-  b.style.left = randomX + "px";
-  b.style.top = randomY + "px";
-  b.style.setProperty("--drift", (Math.random() - 0.5) * 40 + "px");
-
-  document.body.appendChild(b);
-
-  setTimeout(() => b.remove(), 2000);
-}
-
-function burstBubbles(target) {
-
-  const rect = target.getBoundingClientRect();
-
-  for (let i = 0; i < 12; i++) {
-
-    const b = document.createElement("div");
-    b.className = "bubbleBurst";
-
-    b.style.left =
-      rect.left + rect.width / 2 + "px";
-
-    b.style.top =
-      rect.top + rect.height / 2 + "px";
-
-    b.style.setProperty("--dx", (Math.random() - 0.5) * 120 + "px");
-    b.style.setProperty("--dy", (Math.random() - 0.5) * 120 + "px");
-
-    document.body.appendChild(b);
-
-    setTimeout(() => b.remove(), 900);
-  }
-}
 
 function showReactionBar(bubble) {
 
@@ -1775,7 +1768,7 @@ function openAvatarPreview() {
   overlay.className = "avatarPreviewOverlay";
 
   overlay.innerHTML = `
-    <img src="avatar.png" class="avatarPreviewImage" id="zoomAvatar">
+    <img src="avatar.jpeg" class="avatarPreviewImage" id="zoomAvatar">
   `;
 
   document.body.appendChild(overlay);
@@ -1870,4 +1863,62 @@ function setRealHeight() {
 }
 
 setRealHeight();
-window.addEventListener("resize", setRealHeight);
+window.addEventListener("resize", setRealHeight); 
+
+function initMemoryCards() {
+
+  const cards = document.querySelectorAll(".memory-card");
+  let activeIndex = 1;
+
+  function updatePositions() {
+    cards.forEach((card, i) => {
+
+      card.classList.remove("left", "center", "right");
+
+      const diff = i - activeIndex;
+
+      if (diff === 0) {
+        card.classList.add("center");
+
+      } else if (diff === -1 || diff === cards.length - 1) {
+        card.classList.add("left");
+
+      } else if (diff === 1 || diff === -(cards.length - 1)) {
+        card.classList.add("right");
+      }
+
+    });
+  }
+
+  cards.forEach((card, index) => {
+
+    card.addEventListener("click", () => {
+
+      const currentCenter = document.querySelector(".memory-card.center");
+
+      // 🔥 STEP 1: If clicking SAME center → just flip
+      if (card === currentCenter) {
+        card.classList.toggle("flip");
+        return;
+      }
+
+      // 🔥 STEP 2: If another card clicked
+      if (currentCenter) {
+        currentCenter.classList.remove("flip"); // flip back to image
+      }
+
+      // 🔥 STEP 3: move clicked card to center
+      activeIndex = index;
+      updatePositions();
+
+      // 🔥 STEP 4 (optional smooth delay flip)
+      setTimeout(() => {
+        card.classList.add("flip");
+      }, 300);
+
+    });
+
+  });
+
+  updatePositions();
+}
