@@ -1490,7 +1490,7 @@ body.blur-active .stack {
   transform: rotateY(180deg);
   padding: 20px;
   text-align: center;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .back p {
