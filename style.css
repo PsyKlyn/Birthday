@@ -9,10 +9,10 @@ body {
   font-family: 'Inter', sans-serif;
   height: 100vh;
   background: radial-gradient(
-  circle at 25% 15%,
-  #1f255a,
-  #3b0f46,
-  #090d14
+  circle at 30% 20%,
+ #2a2f75,
+  #7a2b7f,
+  #0a0f1f
 );
   display: flex;
   align-items: center;
@@ -26,8 +26,8 @@ body::before {
   position: fixed;
   inset: 0;
   background: radial-gradient(
-    circle at center,
-    rgba(255, 182, 255, 0.08),
+    circle at 40% 30%,
+    rgba(255, 120, 255, 0.12),
     transparent 60%
   );
   pointer-events: none;
@@ -1524,4 +1524,15 @@ body.blur-active .stack {
     transform: translateX(105%) scale(.85);
   }
 
+}
+
+@media (max-width: 600px) {
+  body {
+    background: radial-gradient(
+      circle at 30% 20%,
+      #3a3fa0,
+      #8a3b9f,
+      #0a0f1f
+    );
+  }
 }
