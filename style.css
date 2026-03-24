@@ -24,7 +24,7 @@ body::before {
   position: fixed;
   inset: 0;
   background: radial-gradient(circle at 40% 30%,
-      rgba(57, 30, 57, 0.12),
+      rgba(57, 24, 57, 0.12),
       transparent 60%);
   pointer-events: none;
 }
