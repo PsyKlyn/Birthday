@@ -24,7 +24,7 @@ body::before {
   position: fixed;
   inset: 0;
   background: radial-gradient(circle at 40% 30%,
-      rgba(57, 24, 57, 0.12),
+      rgba(65, 22, 65, 0.12),
       transparent 60%);
   pointer-events: none;
 }
@@ -268,6 +268,7 @@ body::before {
 .voiceCard {
   position: relative;
   padding: 30px;
+  transform: translateY(-20px);
   border-radius: 30px;
   backdrop-filter: blur(22px);
   background: rgba(255, 255, 255, .18);
@@ -1539,5 +1540,77 @@ body.blur-active .stack {
         #141e30,
         #243b55,
         #0a0f1c);
+  }
+}
+
+#subtitleContainer {
+  position: relative;
+  top: 100%;
+  margin-top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 320px;
+
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+/* each subtitle line */
+.subtitle {
+  padding: 10px 16px;
+  border-radius: 18px;
+  position: absolute;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.25);
+
+  font-size: clamp(12px, 3vw, 15px);
+  text-align: center;
+  color: white;
+
+  text-shadow: 0 0 8px rgba(255, 200, 255, 0.6);
+
+  animation: subtitleFlow 8s linear forwards,
+    glowPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes subtitleFlow {
+  0% {
+    opacity: 0;
+    transform: translateY(0) ;
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 
+      0 0 6px rgba(255, 182, 255, 0.2),
+      0 0 12px rgba(255, 182, 255, 0.1);
+  }
+
+  50% {
+    box-shadow: 
+      0 0 18px rgba(255, 182, 255, 0.6),
+      0 0 30px rgba(255, 182, 255, 0.3);
+  }
+
+  100% {
+    box-shadow: 
+      0 0 6px rgba(255, 182, 255, 0.2),
+      0 0 12px rgba(255, 182, 255, 0.1);
   }
 }

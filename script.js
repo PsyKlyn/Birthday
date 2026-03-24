@@ -20,7 +20,7 @@ const messages = [
 const photoMemories = [
   { img: "mem1.jpg", caption: "Your smile is my favorite memory " },
   { img: "mem2.jpg", caption: "That first picture… I don’t know why, but it felt different. Your eyes don’t just look at me, they make me feel seen." },
-  { img: "mem3.jpeg", caption: "There’s a kind of happiness in your picture, but your eyes tell a deeper story. Not in a sad way… just someone who’s been through things and still holds it together."}
+  { img: "mem3.jpeg", caption: "There’s a kind of happiness in your picture, but your eyes tell a deeper story. Not in a sad way… just someone who’s been through things and still holds it together." }
 ];
 
 /* ===============================
@@ -194,7 +194,7 @@ const icon = document.getElementById("musicIcon");
 // 🔥 autoplay on first click anywhere
 document.addEventListener("click", () => {
   if (audio.paused) {
-    audio.play().catch(() => {});
+    audio.play().catch(() => { });
     icon.classList.remove("fa-play");
     icon.classList.add("fa-pause");
   }
@@ -338,6 +338,7 @@ function showVoiceNote() {
 
   stage.innerHTML = `
     <div class="voiceCard" id="voiceCard">
+    <div id="subtitleContainer"></div>
       <h2>A message for you</h2>
       <!--  waveform -->
       <div class="wave" id="wave">
@@ -345,7 +346,7 @@ function showVoiceNote() {
       </div>
 
 
-      <button onclick="playVoice()" class="voiceBtn">
+      <button onclick="playVoice()" class="voiceBtn"
         ▶ Play
       </button>
     </div>
@@ -354,6 +355,14 @@ function showVoiceNote() {
 
 let voiceAudio = new Audio("music.mp3");
 let audioCtx, analyser, source, dataArray, raf;
+
+voiceAudio.onended = () => {
+  subtitleIndex = 0;
+  isSubtitlePlaying = false;
+
+  const container = document.getElementById("subtitleContainer");
+  container.innerHTML = "";
+};
 
 function playVoice() {
 
@@ -377,11 +386,89 @@ function playVoice() {
 
     animateWave();
 
-  } else {
+    playSubtitles();
+
+  }
+  else {
+
     voiceAudio.pause();
     btn.innerText = "▶ Play";
+
     cancelAnimationFrame(raf);
+
+    // 🔥 STOP subtitles PROPERLY
+    clearInterval(subtitleInterval);
+    subtitleInterval = null;
+    isSubtitlePlaying = false;
+
   }
+}
+
+let subtitleTimeouts = [];
+
+const lines = [
+  "Happy birthday to someone who carries so much inside but still chooses to shine.",
+  "You don’t just look beautiful… you are strong in ways people don’t even notice.",
+  "I hope one day life becomes as kind to you as you are to everyone else.",
+  "I see more in you than you show, and I just hope this year heals every part of you that’s been quietly hurting."
+];
+
+let subtitleIndex = 0;
+let subtitleInterval = null;
+let isSubtitlePlaying = false;
+
+function playSubtitles() {
+
+  const container = document.getElementById("subtitleContainer");
+
+  if (isSubtitlePlaying) return;
+
+  isSubtitlePlaying = true;
+
+  function showLine() {
+
+    if (subtitleIndex >= lines.length) {
+
+      clearInterval(subtitleInterval);
+      subtitleInterval = null;
+      isSubtitlePlaying = false;
+
+      voiceAudio.pause();
+      voiceAudio.currentTime = 0;
+
+      const btn = document.querySelector(".voiceBtn");
+      if (btn) btn.innerText = "▶ Play";
+
+      cancelAnimationFrame(raf);
+
+      subtitleIndex = 0;
+      return;
+    }
+
+    const el = document.createElement("div");
+    el.className = "subtitle";
+    el.textContent = lines[subtitleIndex];
+
+    const old = container.querySelector(".subtitle");
+
+    if (old) {
+      container.appendChild(el);
+
+      //  remove THIS specific element later (not "old")
+      setTimeout(() => {
+        el.remove();
+      }, 8000);
+    }
+    container.appendChild(el);
+
+    subtitleIndex++;
+  }
+
+  // first line instantly
+  showLine();
+
+  //  show next every 8s
+  subtitleInterval = setInterval(showLine,6500);
 }
 
 function animateWave() {
@@ -549,7 +636,7 @@ function showWishReveal() {
     <h2>A Wish for you ✨</h2>
     <p>
       I wish your year is filled with chaos, laughter
-      and unforgettable memories ❤️
+      and unforgettable memories ❤️<br>Wait for 3 sec...
     </p>
   `;
 
@@ -1863,7 +1950,7 @@ function setRealHeight() {
 }
 
 setRealHeight();
-window.addEventListener("resize", setRealHeight); 
+window.addEventListener("resize", setRealHeight);
 
 function initMemoryCards() {
 
