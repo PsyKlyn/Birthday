@@ -19,8 +19,8 @@ const messages = [
 
 const photoMemories = [
   { img: "mem1.jpg", caption: "Your smile is my favorite memory " },
-  { img: "mem2.jpg", caption: "That first picture… I don’t know why, but it felt different. Your eyes don’t just look at me, they make me feel seen." },
-  { img: "mem3.jpeg", caption: "There’s a kind of happiness in your picture, but your eyes tell a deeper story. Not in a sad way… just someone who’s been through things and still holds it together." }
+  { img: "mem2.jpg", caption: "That first picture… I don’t know why, but it felt different. Your eyes don’t just look at me they make me feel seen." },
+  { img: "mem3.jpeg", caption: "There’s a quiet happiness in your picture, but your eyes reveal a deeper story you don’t always show." }
 ];
 
 /* ===============================
