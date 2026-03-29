@@ -822,7 +822,7 @@ document.querySelectorAll(".flipCard").forEach(card => {
 ================================ */
 
 const wisherMessages = [
-  "Happy birthday Dimashree!  wishing you quiet happiness, real smiles, and a heart that feels lighter this year. ",
+  "Happy birthday !  wishing you quiet happiness, real smiles, and a heart that feels lighter this year. ",
   "You mean a lot to me ❤️",
   "Always here for you ✨"
 ];
